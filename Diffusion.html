@@ -19,36 +19,107 @@
     </div>
     <ul class="space-y-5 text-lg w-full">
       <li class="hover:text-cyan-300 cursor-pointer flex items-center gap-2">
-        <i class="fa-solid fa-house"></i> <a href="Index.html">Home</a>
+        <i class="fa-solid fa-house"></i> Home
       </li>
       <li class="font-bold">
         <span class="flex items-center gap-2">
-          <i class="fa-solid fa-water"></i> <a href="#">Passive Transports</a>
+          <i class="fa-solid fa-water"></i> Passive Transports
         </span>
         <ul class="ml-6 mt-2 space-y-2">
           <li class="bg-cyan-600 bg-opacity-80 px-2 py-1 rounded flex items-center gap-2 shadow">
-            <i class="fa-solid fa-arrow-right-arrow-left"></i> <a href="#">Diffusion</a>
+            <i class="fa-solid fa-arrow-right-arrow-left"></i> Diffusion
           </li>
           <li class="hover:text-cyan-300 cursor-pointer flex items-center gap-2">
-            <i class="fa-solid fa-person-walking-arrow-right"></i> <a href="Facilitated-Diffusion.html">Facilitated Diffusion</a>
+            <i class="fa-solid fa-person-walking-arrow-right"></i> Facilitated Diffusion
           </li>
           <li class="hover:text-cyan-300 cursor-pointer flex items-center gap-2">
-            <i class="fa-solid fa-droplet"></i> <a href="Osmosis.html">Osmosis</a>
+            <i class="fa-solid fa-droplet"></i> Osmosis
           </li>
         </ul>
       </li>
     </ul>
   </nav>
-<!-- MAIN CONTENT -->
+
+  <!-- MAIN CONTENT -->
   <main class="flex-1 p-10 space-y-16 overflow-y-auto relative">
-    <!-- BODY -->
+    <!-- HEADER -->
+    <section class="text-center">
+      <h1 class="text-5xl font-extrabold text-cyan-300 mb-4 drop-shadow-lg bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">Diffusion in Biology</h1>
+      <p class="text-xl text-gray-200 italic drop-shadow">Movement of particles from high to low concentration</p>
+    </section>
+
+    <!-- GIF SECTION -->
+    <section class="flex justify-center">
+      <div class="rounded-2xl shadow-2xl border-4 border-cyan-200 bg-gradient-to-br from-cyan-100/40 to-blue-100/10 p-2">
+        <img src="c:\Users\MSI\Downloads\z4ayxG.gif" alt="Diffusion Animation" class="rounded-xl w-[600px] shadow-xl" />
+      </div>
+    </section>
+
+    <!-- TEXT + BUBBLE EFFECT -->
+    <section class="relative bg-white bg-opacity-90 p-8 rounded-2xl shadow-2xl max-w-3xl mx-auto text-black overflow-hidden">
+      <!-- Multiple bubbles for effect -->
+      <div class="absolute -top-5 -left-5 bubble" style="animation-delay: 0s;"></div>
+      <div class="absolute -top-10 right-10 bubble" style="animation-delay: 2s;"></div>
+      <div class="absolute bottom-0 left-1/2 bubble" style="animation-delay: 4s;"></div>
+      <div class="absolute top-1/2 right-0 bubble" style="animation-delay: 3s;"></div>
+      <div class="absolute bottom-8 left-10 bubble" style="animation-delay: 1.5s;"></div>
+      <h2 class="text-2xl font-semibold text-cyan-700 mb-4 flex items-center gap-2">
+        <i class="fa-solid fa-arrows-left-right"></i> How It Works
+      </h2>
+      <p class="leading-relaxed text-lg">
+        In diffusion, molecules move from an area of high concentration to an area of low concentration. This process happens in the lungs, cells, and many biological systems. It's passive—no energy needed!
+      </p>
+    </section>
+
+    <!-- MINI INFO CARDS (Interactive) -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div onclick="showEffect(0)" id="card-0" class="group cursor-pointer bg-gradient-to-br from-cyan-500 via-blue-500 to-blue-700 text-white p-6 rounded-xl shadow-xl hover:scale-105 transform transition duration-300 border-2 border-cyan-200/40 relative">
+        <h3 class="text-xl font-bold flex items-center gap-2"><i class="fa-solid fa-lungs"></i> Gas Exchange</h3>
+        <p class="mt-2">Oxygen diffuses into blood in the lungs.</p>
+        <div id="effect-0" class="hidden absolute left-1/2 -translate-x-1/2 top-full mt-3 w-64 bg-white bg-opacity-90 text-cyan-800 rounded-lg shadow-lg p-3 text-center text-base z-10 border border-cyan-300 animate__animated"></div>
+      </div>
+      <div onclick="showEffect(1)" id="card-1" class="group cursor-pointer bg-gradient-to-br from-green-400 via-green-500 to-teal-600 text-white p-6 rounded-xl shadow-xl hover:scale-105 transform transition duration-300 border-2 border-green-200/40 relative">
+        <h3 class="text-xl font-bold flex items-center gap-2"><i class="fa-solid fa-dna"></i> Cells</h3>
+        <p class="mt-2">Waste products diffuse out of cells easily.</p>
+        <div id="effect-1" class="hidden absolute left-1/2 -translate-x-1/2 top-full mt-3 w-64 bg-white bg-opacity-90 text-green-800 rounded-lg shadow-lg p-3 text-center text-base z-10 border border-green-300 animate__animated"></div>
+      </div>
+      <div onclick="showEffect(2)" id="card-2" class="group cursor-pointer bg-gradient-to-br from-purple-500 via-fuchsia-500 to-pink-500 text-white p-6 rounded-xl shadow-xl hover:scale-105 transform transition duration-300 border-2 border-purple-200/40 relative">
+        <h3 class="text-xl font-bold flex items-center gap-2"><i class="fa-solid fa-bolt"></i> No Energy</h3>
+        <p class="mt-2">Diffusion is a passive process—it uses no ATP.</p>
+        <div id="effect-2" class="hidden absolute left-1/2 -translate-x-1/2 top-full mt-3 w-64 bg-white bg-opacity-90 text-fuchsia-800 rounded-lg shadow-lg p-3 text-center text-base z-10 border border-fuchsia-300 animate__animated"></div>
+      </div>
+    </section>
+
+    <script>
+      const facts = [
+        "🌬️ Fun Fact: Each breath you take exchanges about 300 million tiny air sacs in your lungs!",
+        "🧬 Fun Fact: Human bodies have about 37 trillion cells, all using diffusion to survive.",
+        "⚡ Fun Fact: Diffusion needs no energy—it's nature's way of balancing things out!"
+      ];
+
+      function showEffect(idx) {
+        for (let i = 0; i < 3; i++) {
+          document.getElementById('effect-' + i).classList.add('hidden');
+          document.getElementById('card-' + i).classList.remove('ring-4', 'ring-yellow-300', 'animate-bounce');
+        }
+        const card = document.getElementById('card-' + idx);
+        const effect = document.getElementById('effect-' + idx);
+        effect.textContent = facts[idx];
+        effect.classList.remove('hidden');
+        card.classList.add('ring-4', 'ring-yellow-300', 'animate-bounce');
+        setTimeout(() => {
+          card.classList.remove('ring-4', 'ring-yellow-300', 'animate-bounce');
+        }, 1000);
+      }
+    </script>
+
     <!-- FOOTER -->
     <footer class="text-center text-sm text-gray-200 mt-20 py-4 bg-gradient-to-r from-cyan-900/60 to-blue-900/60 rounded-xl shadow-lg flex flex-col items-center gap-2">
-    <span>
-      <i class="fa-solid fa-leaf text-green-400"></i>
-      &copy; 2025 Biology Explorer | All Rights Reserved
-    </span>
-    <span class="text-xs text-cyan-200">Designed with <i class="fa-solid fa-heart text-pink-400"></i> for learning</span>
+      <span>
+        <i class="fa-solid fa-leaf text-green-400"></i>
+        &copy; 2025 Biology Explorer | All Rights Reserved
+      </span>
+      <span class="text-xs text-cyan-200">Designed with <i class="fa-solid fa-heart text-pink-400"></i> for learning</span>
     </footer>
   </main>
 </body>
