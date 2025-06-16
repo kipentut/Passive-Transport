@@ -1,30 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Passive Transport</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BioLearn Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <!-- Vertical Navbar -->
-    <div class="nav">
-        <ul>
-            <li><a href="#" class="active">Home</a></li>
-            <li>
-                <a href="#">Passive Transports</a>
-                <div class="navdropdown">
-                    <ul>
-                        <li><a href="Diffusion.html">Diffusion</a></li>
-                        <li><a href="Facilitated-Diffusion.html">Facilitated Diffusion</a></li>
-                        <li><a href="Osmosis.html">Osmosis</a></li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
+<body class="flex text-white relative">
+  <div class="bg-overlay"></div>
+  <div class="animated-overlay"></div>
+  <!-- SIDEBAR NAV -->
+  <nav class="w-60 glass min-h-screen p-6 shadow-2xl flex flex-col items-center">
+    <div class="mb-8 flex items-center gap-3">
+      <i class="fa-solid fa-dna text-cyan-400 text-3xl"></i>
+      <span class="text-2xl font-extrabold tracking-wide text-cyan-200">BioLearn</span>
     </div>
-    <!-- Main Content -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <ul class="space-y-5 text-lg w-full">
+      <li class="bg-cyan-600 bg-opacity-80 px-2 py-1 rounded flex items-center gap-2 shadow">
+        <i class="fa-solid fa-house"></i> <a href="#">Home</a>
+      </li>
+      <li class="font-bold">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-water"></i> <a href="#">Passive Transports</a>
+        </span>
+        <ul class="ml-6 mt-2 space-y-2">
+          <li class="hover:text-cyan-300 cursor-pointer flex items-center gap-2">
+            <i class="fa-solid fa-arrow-right-arrow-left"></i> <a href="Diffusion.html">Diffusion</a>
+          </li>
+          <li class="hover:text-cyan-300 cursor-pointer flex items-center gap-2">
+            <i class="fa-solid fa-person-walking-arrow-right"></i> <a href="Facilitated-Diffusion.html">Facilitated Diffusion</a>
+          </li>
+          <li class="hover:text-cyan-300 cursor-pointer flex items-center gap-2">
+            <i class="fa-solid fa-droplet"></i> <a href="Osmosis.html">Osmosis</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+<!-- MAIN CONTENT -->
+  <main class="flex-1 p-10 space-y-16 overflow-y-auto relative">
+    <!-- BODY -->
+    <!-- FOOTER -->
+    <footer class="text-center text-sm text-gray-200 mt-20 py-4 bg-gradient-to-r from-cyan-900/60 to-blue-900/60 rounded-xl shadow-lg flex flex-col items-center gap-2">
+    <span>
+      <i class="fa-solid fa-leaf text-green-400"></i>
+      &copy; 2025 Biology Explorer | All Rights Reserved
+    </span>
+    <span class="text-xs text-cyan-200">Designed with <i class="fa-solid fa-heart text-pink-400"></i> for learning</span>
+    </footer>
+  </main>
 </body>
 </html>
