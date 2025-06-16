@@ -19,21 +19,21 @@
     </div>
     <ul class="space-y-5 text-lg w-full">
       <li class="hover:text-cyan-300 cursor-pointer flex items-center gap-2">
-        <i class="fa-solid fa-house"></i> <a href="Index.html">Home</a>
+        <i class="fa-solid fa-house"></i> Home
       </li>
       <li class="font-bold">
         <span class="flex items-center gap-2">
-          <i class="fa-solid fa-water"></i> <a href="#">Passive Transports</a>
+          <i class="fa-solid fa-water"></i> Passive Transports
         </span>
         <ul class="ml-6 mt-2 space-y-2">
           <li class="bg-cyan-600 bg-opacity-80 px-2 py-1 rounded flex items-center gap-2 shadow">
-            <i class="fa-solid fa-arrow-right-arrow-left"></i> <a href="#">Diffusion</a>
+            <i class="fa-solid fa-arrow-right-arrow-left"></i> Diffusion
           </li>
           <li class="hover:text-cyan-300 cursor-pointer flex items-center gap-2">
-            <i class="fa-solid fa-person-walking-arrow-right"></i> <a href="Facilitated-Diffusion.html">Facilitated Diffusion</a>
+            <i class="fa-solid fa-person-walking-arrow-right"></i> Facilitated Diffusion
           </li>
           <li class="hover:text-cyan-300 cursor-pointer flex items-center gap-2">
-            <i class="fa-solid fa-droplet"></i> <a href="Osmosis.html">Osmosis</a>
+            <i class="fa-solid fa-droplet"></i> Osmosis
           </li>
         </ul>
       </li>
@@ -44,30 +44,39 @@
   <main class="flex-1 p-10 space-y-16 overflow-y-auto relative">
     <!-- HEADER -->
     <section class="text-center">
-      <h1 class="text-5xl font-extrabold text-cyan-300 mb-4 drop-shadow-lg bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">Diffusion in Biology</h1>
-      <p class="text-xl text-gray-200 italic drop-shadow">Movement of particles from high to low concentration</p>
+      <h1 class="text-5xl font-extrabold text-cyan-300 mb-4 drop-shadow-lg bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+        Diffusion in Biology
+      </h1>
+      <p class="text-xl text-gray-200 italic drop-shadow">
+        Movement of particles from high to low concentration
+      </p>
     </section>
 
-    <!-- GIF SECTION -->
-    <section class="flex justify-center">
-      <div class="rounded-2xl shadow-2xl border-4 border-cyan-200 bg-gradient-to-br from-cyan-100/40 to-blue-100/10 p-2">
-        <img src="c:\Users\MSI\Downloads\z4ayxG.gif" alt="Diffusion Animation" class="rounded-xl w-[600px] shadow-xl" />
+    <!-- INTERACTIVE DIFFUSION SIMULATION -->
+    <section class="flex justify-center items-center min-h-[340px]">
+      <div id="diffusion-area" class="relative w-[600px] h-[260px] rounded-2xl bg-gradient-to-r from-cyan-900/80 via-blue-900/80 to-purple-900/80 shadow-2xl border-4 border-cyan-200 overflow-hidden">
+        <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-white bg-opacity-40 z-10"></div>
+        <span class="absolute left-8 top-2 text-cyan-200 text-sm font-bold">High Concentration</span>
+        <span class="absolute right-8 top-2 text-purple-200 text-sm font-bold">Low Concentration</span>
+        <button id="add-particle" class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-cyan-500 hover:bg-cyan-400 text-white px-4 py-2 rounded-lg shadow-lg font-semibold transition">
+          Add Particle
+        </button>
+        <span class="absolute bottom-4 right-6 text-xs text-cyan-200 bg-cyan-900/60 px-2 py-1 rounded">Click a particle to speed it up!</span>
       </div>
     </section>
 
     <!-- TEXT + BUBBLE EFFECT -->
     <section class="relative bg-white bg-opacity-90 p-8 rounded-2xl shadow-2xl max-w-3xl mx-auto text-black overflow-hidden">
-      <!-- Multiple bubbles for effect -->
       <div class="absolute -top-5 -left-5 bubble" style="animation-delay: 0s;"></div>
       <div class="absolute -top-10 right-10 bubble" style="animation-delay: 2s;"></div>
       <div class="absolute bottom-0 left-1/2 bubble" style="animation-delay: 4s;"></div>
       <div class="absolute top-1/2 right-0 bubble" style="animation-delay: 3s;"></div>
       <div class="absolute bottom-8 left-10 bubble" style="animation-delay: 1.5s;"></div>
       <h2 class="text-2xl font-semibold text-cyan-700 mb-4 flex items-center gap-2">
-        <i class="fa-solid fa-arrows-left-right"></i> How It Works
+        <i class="fa-solid fa-arrows-left-right"></i> Try It Yourself!
       </h2>
       <p class="leading-relaxed text-lg">
-        In diffusion, molecules move from an area of high concentration to an area of low concentration. This process happens in the lungs, cells, and many biological systems. It's passive—no energy needed!
+        Watch how particles move from high to low concentration. Add more particles or click them to see how diffusion works in real time!
       </p>
     </section>
 
@@ -90,29 +99,6 @@
       </div>
     </section>
 
-    <script>
-      const facts = [
-        "🌬️ Fun Fact: Each breath you take exchanges about 300 million tiny air sacs in your lungs!",
-        "🧬 Fun Fact: Human bodies have about 37 trillion cells, all using diffusion to survive.",
-        "⚡ Fun Fact: Diffusion needs no energy—it's nature's way of balancing things out!"
-      ];
-
-      function showEffect(idx) {
-        for (let i = 0; i < 3; i++) {
-          document.getElementById('effect-' + i).classList.add('hidden');
-          document.getElementById('card-' + i).classList.remove('ring-4', 'ring-yellow-300', 'animate-bounce');
-        }
-        const card = document.getElementById('card-' + idx);
-        const effect = document.getElementById('effect-' + idx);
-        effect.textContent = facts[idx];
-        effect.classList.remove('hidden');
-        card.classList.add('ring-4', 'ring-yellow-300', 'animate-bounce');
-        setTimeout(() => {
-          card.classList.remove('ring-4', 'ring-yellow-300', 'animate-bounce');
-        }, 1000);
-      }
-    </script>
-
     <!-- FOOTER -->
     <footer class="text-center text-sm text-gray-200 mt-20 py-4 bg-gradient-to-r from-cyan-900/60 to-blue-900/60 rounded-xl shadow-lg flex flex-col items-center gap-2">
       <span>
@@ -120,7 +106,167 @@
         &copy; 2025 Biology Explorer | All Rights Reserved
       </span>
       <span class="text-xs text-cyan-200">Designed with <i class="fa-solid fa-heart text-pink-400"></i> for learning</span>
+
+      <div id="footer-reaction" class="mt-2 text-lg font-bold text-cyan-300 h-6"></div>
     </footer>
   </main>
+
+  <script>
+    const area = document.getElementById('diffusion-area');
+    const addBtn = document.getElementById('add-particle');
+    let particles = [];
+    let countDiffused = 0;
+    const midX = 300;
+
+    const counterDisplay = document.createElement('div');
+    counterDisplay.className = "absolute top-2 left-1/2 transform -translate-x-1/2 text-xs text-white bg-blue-900/70 px-3 py-1 rounded shadow";
+    counterDisplay.id = "diff-counter";
+    counterDisplay.textContent = `Diffused: 0`;
+    area.appendChild(counterDisplay);
+
+    function createParticle() {
+      return {
+        x: Math.random() * 120 + 40,
+        y: Math.random() * 180 + 30,
+        vx: Math.random() * 1.2 + 0.5,
+        vy: (Math.random() - 0.5) * 1.2,
+        color: 'bg-cyan-300',
+        id: Math.random().toString(36).substr(2, 9),
+        speedup: false,
+        crossed: false
+      };
+    }
+
+    function resetParticles() {
+      particles = [];
+      countDiffused = 0;
+      document.getElementById("diff-counter").textContent = "Diffused: 0";
+    }
+
+    for (let i = 0; i < 24; i++) particles.push(createParticle());
+
+    function renderParticles() {
+      area.querySelectorAll('.particle').forEach(e => e.remove());
+
+      for (let p of particles) {
+        // Move logic
+        if (p.speedup) {
+          p.x += p.vx * 2.5;
+          p.y += p.vy * 2.5;
+        } else {
+          p.x += p.vx;
+          p.y += p.vy;
+        }
+
+        if (p.y < 16 || p.y > 244) p.vy *= -1;
+        if (p.x < midX - 10) p.vx += Math.random() * 0.05;
+        p.vx += (Math.random() - 0.5) * 0.04;
+        p.vy += (Math.random() - 0.5) * 0.04;
+        p.x = Math.max(16, Math.min(584, p.x));
+        p.y = Math.max(16, Math.min(244, p.y));
+
+        // Create element
+        const el = document.createElement('div');
+        el.className = `particle absolute rounded-full shadow-lg transition-all duration-200 cursor-pointer ${p.color}`;
+        el.style.width = '18px';
+        el.style.height = '18px';
+        el.style.left = `${p.x - 9}px`;
+        el.style.top = `${p.y - 9}px`;
+        el.style.opacity = p.speedup ? '1' : '0.85';
+        el.style.boxShadow = `0 0 16px 2px ${p.color === 'bg-cyan-300' ? '#67e8f9' : '#e9d5ff'}`;
+        el.title = "Click to speed up!";
+        el.onclick = () => {
+          p.speedup = true;
+          setTimeout(() => { p.speedup = false; }, 600);
+          playSound('click');
+        };
+
+        // Track crossing
+        if (!p.crossed && p.x > midX) {
+          p.crossed = true;
+          p.color = 'bg-purple-300';
+          countDiffused++;
+          document.getElementById("diff-counter").textContent = `Diffused: ${countDiffused}`;
+          el.classList.add("animate-bounce");
+        }
+
+        area.appendChild(el);
+      }
+
+      requestAnimationFrame(renderParticles);
+    }
+
+    addBtn.onclick = () => {
+      particles.push(createParticle());
+    };
+
+    renderParticles();
+
+    // Reset Button
+    const resetBtn = document.createElement('button');
+    resetBtn.textContent = 'Reset Particles';
+    resetBtn.className = "absolute top-2 right-4 bg-red-500 hover:bg-red-400 text-white px-3 py-1 rounded text-xs shadow";
+    resetBtn.onclick = () => resetParticles();
+    area.appendChild(resetBtn);
+
+    // Sound effects
+    const sounds = {
+      click: new Audio('https://cdn.pixabay.com/download/audio/2023/03/06/audio_faa2789ce7.mp3?filename=click-124467.mp3'),
+      emoji: new Audio('https://cdn.pixabay.com/download/audio/2022/08/10/audio_d943d8c31e.mp3?filename=success-1-6297.mp3')
+    };
+
+    function playSound(type) {
+      if (type in sounds) {
+        sounds[type].currentTime = 0;
+        sounds[type].play();
+      }
+    }
+
+    // Emoji interaction w/ sound
+    function footerReact(emoji) {
+      const el = document.getElementById('footer-reaction');
+      el.textContent = `You reacted: ${emoji}`;
+      el.classList.add('animate-bounce');
+      setTimeout(() => el.classList.remove('animate-bounce'), 800);
+      playSound('emoji');
+    }
+
+    window.footerReact = footerReact;
+
+    // Info card hover tip
+    document.querySelectorAll('.group').forEach((card, idx) => {
+      card.addEventListener('mouseenter', () => {
+        card.classList.add('scale-105', 'ring-2', 'ring-white/40');
+      });
+      card.addEventListener('mouseleave', () => {
+        card.classList.remove('scale-105', 'ring-2', 'ring-white/40');
+      });
+    });
+
+    // Fun facts for each card
+    const facts = [
+      "🌬️ Fun Fact: Each breath you take exchanges about 300 million tiny air sacs in your lungs!",
+      "🧬 Fun Fact: Human bodies have about 37 trillion cells, all using diffusion to survive.",
+      "⚡ Fun Fact: Diffusion needs no energy—it's nature's way of balancing things out!"
+    ];
+
+    function showEffect(idx) {
+      // Remove effects from all cards
+      for (let i = 0; i < 3; i++) {
+        document.getElementById('effect-' + i).classList.add('hidden');
+        document.getElementById('card-' + i).classList.remove('ring-4', 'ring-yellow-300', 'animate-bounce');
+      }
+      // Add effect to clicked card
+      const card = document.getElementById('card-' + idx);
+      const effect = document.getElementById('effect-' + idx);
+      effect.textContent = facts[idx];
+      effect.classList.remove('hidden');
+      card.classList.add('ring-4', 'ring-yellow-300', 'animate-bounce');
+      // Remove animation after 1s
+      setTimeout(() => {
+        card.classList.remove('ring-4', 'ring-yellow-300', 'animate-bounce');
+      }, 1000);
+    }
+  </script>
 </body>
 </html>
