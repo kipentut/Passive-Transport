@@ -39,17 +39,149 @@
       </li>
     </ul>
   </nav>
-<!-- MAIN CONTENT -->
+  <!-- MAIN CONTENT -->
   <main class="flex-1 p-10 space-y-16 overflow-y-auto relative">
     <!-- BODY -->
+    <section class="max-w-3xl mx-auto bg-cyan-900/60 rounded-xl shadow-lg p-8 flex flex-col gap-8">
+      <h1 class="text-4xl font-bold text-cyan-300 mb-2 flex items-center gap-3">
+        <i class="fa-solid fa-droplet"></i> Osmosis
+      </h1>
+      <p class="text-lg text-cyan-100">
+        Osmosis is the movement of water molecules from an area of <span class="font-semibold text-cyan-300">low solute concentration</span> to an area of <span class="font-semibold text-blue-300">high solute concentration</span> through a <span class="font-semibold text-cyan-200">selectively permeable membrane</span>.
+      </p>
+      <!-- INTERACTIVE OSMOSIS SIMULATION -->
+      <div class="bg-cyan-800/70 rounded-lg p-6 flex flex-col items-center gap-6 shadow-md">
+        <h2 class="text-2xl font-semibold text-cyan-200 mb-2">Osmosis Simulator</h2>
+        <div class="flex flex-col md:flex-row items-center gap-8 w-full">
+          <!-- Left Side Controls -->
+          <div class="flex flex-col items-center w-48">
+            <label for="left-concentration" class="text-cyan-100 mb-1 text-center">Solute Concentration<br>(Left Side): <span id="left-conc-value" class="font-bold text-cyan-300">20</span>%</label>
+            <input type="range" id="left-concentration" min="0" max="100" value="20" class="w-full accent-cyan-400">
+          </div>
+          <div class="flex-1"></div>
+          <!-- Right Side Controls -->
+          <div class="flex flex-col items-center w-48">
+            <label for="right-concentration" class="text-cyan-100 mb-1 text-center">Solute Concentration<br>(Right Side): <span id="right-conc-value" class="font-bold text-cyan-300">50</span>%</label>
+            <input type="range" id="right-concentration" min="0" max="100" value="50" class="w-full accent-cyan-400">
+          </div>
+        </div>
+        <div class="flex items-center justify-center gap-8 w-full mt-6">
+          <!-- Left Side (Low Solute) -->
+          <div class="flex flex-col items-center">
+            <span class="font-bold text-cyan-200">Left</span>
+            <div id="left-water" class="h-32 w-16 bg-blue-400 rounded-b-full border-4 border-blue-900 flex items-end justify-center transition-all duration-500 overflow-hidden">
+              <span class="text-white font-bold mb-2">💧</span>
+            </div>
+            <span class="text-xs text-cyan-100 mt-1">Solute: <span id="left-solute-label">20</span>%</span>
+          </div>
+          <!-- Membrane -->
+          <div class="flex flex-col items-center">
+            <span class="mb-2 text-xs text-cyan-300">Membrane</span>
+            <div class="h-36 w-2 bg-cyan-200 rounded-full"></div>
+          </div>
+          <!-- Right Side (High Solute) -->
+          <div class="flex flex-col items-center">
+            <span class="font-bold text-cyan-200">Right</span>
+            <div id="right-water" class="h-32 w-16 bg-blue-200 rounded-b-full border-4 border-blue-900 flex items-end justify-center transition-all duration-500 overflow-hidden">
+              <span class="text-white font-bold mb-2">💧</span>
+            </div>
+            <span class="text-xs text-cyan-100 mt-1">Solute: <span id="right-solute-label">50</span>%</span>
+          </div>
+        </div>
+        <!-- Animated Droplet -->
+        <div class="relative w-64 h-10 mx-auto my-2">
+          <span id="droplet" class="absolute left-0 top-0 text-3xl transition-all duration-700">💧</span>
+        </div>
+        <div class="mt-4 text-cyan-100 text-center">
+          <span id="osmosis-direction" class="font-bold text-cyan-300">Water moves to the right!</span>
+        </div>
+      </div>
+      <!-- FUN FACT BOX -->
+      <div class="bg-cyan-700/70 rounded-lg p-4 flex items-center gap-4 shadow">
+        <i class="fa-solid fa-flask text-cyan-300 text-2xl"></i>
+        <span class="text-cyan-100">
+          <span class="font-bold text-cyan-200">Fun Fact:</span> Plants rely on osmosis to absorb water from the soil into their roots!
+        </span>
+      </div>
+    </section>
     <!-- FOOTER -->
     <footer class="text-center text-sm text-gray-200 mt-20 py-4 bg-gradient-to-r from-cyan-900/60 to-blue-900/60 rounded-xl shadow-lg flex flex-col items-center gap-2">
-    <span>
-      <i class="fa-solid fa-leaf text-green-400"></i>
-      &copy; 2025 Biology Explorer | All Rights Reserved
-    </span>
-    <span class="text-xs text-cyan-200">Designed with <i class="fa-solid fa-heart text-pink-400"></i> for learning</span>
+      <span>
+        <i class="fa-solid fa-leaf text-green-400"></i>
+        &copy; 2025 Biology Explorer | All Rights Reserved
+      </span>
+      <span class="text-xs text-cyan-200">Designed with <i class="fa-solid fa-heart text-pink-400"></i> for learning</span>
     </footer>
+    <!-- OSMOSIS SCRIPT -->
+    <script>
+      const leftConcentration = document.getElementById('left-concentration');
+      const rightConcentration = document.getElementById('right-concentration');
+      const leftConcValue = document.getElementById('left-conc-value');
+      const rightConcValue = document.getElementById('right-conc-value');
+      const leftSoluteLabel = document.getElementById('left-solute-label');
+      const rightSoluteLabel = document.getElementById('right-solute-label');
+      const leftWater = document.getElementById('left-water');
+      const rightWater = document.getElementById('right-water');
+      const osmosisDirection = document.getElementById('osmosis-direction');
+      const droplet = document.getElementById('droplet');
+
+      function updateOsmosis() {
+        const leftConc = parseInt(leftConcentration.value, 10);
+        const rightConc = parseInt(rightConcentration.value, 10);
+        leftConcValue.textContent = leftConc;
+        rightConcValue.textContent = rightConc;
+        leftSoluteLabel.textContent = leftConc;
+        rightSoluteLabel.textContent = rightConc;
+
+        // Calculate water movement: water moves from low solute to high solute
+        // The side with higher solute gets more water, the other gets less
+        const maxHeight = 120; // px
+        const minHeight = 32;  // px
+
+        // Water moves to the side with higher solute
+        let leftWaterLevel, rightWaterLevel;
+        if (leftConc === rightConc) {
+          leftWaterLevel = rightWaterLevel = (maxHeight + minHeight) / 2;
+        } else if (leftConc < rightConc) {
+          // Water moves to the right
+          rightWaterLevel = maxHeight;
+          leftWaterLevel = minHeight;
+        } else {
+          // Water moves to the left
+          leftWaterLevel = maxHeight;
+          rightWaterLevel = minHeight;
+        }
+
+        leftWater.style.height = `${leftWaterLevel}px`;
+        rightWater.style.height = `${rightWaterLevel}px`;
+
+        // Animate droplet
+        droplet.style.transition = "left 0.7s";
+        if (leftConc < rightConc) {
+          osmosisDirection.textContent = "Water moves to the right!";
+          osmosisDirection.className = "font-bold text-cyan-300";
+          droplet.style.left = "0%";
+          setTimeout(() => {
+            droplet.style.left = "80%";
+          }, 10);
+        } else if (leftConc > rightConc) {
+          osmosisDirection.textContent = "Water moves to the left!";
+          osmosisDirection.className = "font-bold text-blue-300";
+          droplet.style.left = "80%";
+          setTimeout(() => {
+            droplet.style.left = "0%";
+          }, 10);
+        } else {
+          osmosisDirection.textContent = "Water is balanced!";
+          osmosisDirection.className = "font-bold text-green-300";
+          droplet.style.left = "40%";
+        }
+      }
+
+      leftConcentration.addEventListener('input', updateOsmosis);
+      rightConcentration.addEventListener('input', updateOsmosis);
+      window.addEventListener('DOMContentLoaded', updateOsmosis);
+    </script>
   </main>
 </body>
 </html>
